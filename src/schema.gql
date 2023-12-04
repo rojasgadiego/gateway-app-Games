@@ -1,0 +1,116 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Auth {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+type LoginResponseDto {
+  status: Float!
+  token: String!
+  error: String!
+}
+
+type RegisterResponseDto {
+  status: Float!
+  error: String!
+  message: String!
+}
+
+type Ingrediente {
+  id: Float!
+  name: String!
+  description: String!
+  price: Float!
+  stock: Float!
+  state: String!
+}
+
+type Producto {
+  id: Float!
+  name: String!
+  description: String!
+  price: Float!
+  rank: Float!
+  stock: Float!
+  state: String!
+  image: String!
+  ingredients: [Ingrediente!]!
+}
+
+type ProductosResponseDto {
+  status: Float!
+  error: String!
+  data: [Producto!]!
+}
+
+type CreateCarritoResponseDto {
+  status: Float!
+  error: String!
+  message: String!
+  idCarrito: Float!
+}
+
+type CreateLineaProductoResponseDto {
+  status: Float!
+  error: String!
+  message: String!
+}
+
+type getProductoByIdCarritoResponse {
+  status: Float!
+  error: String!
+  productos: [Producto!]!
+}
+
+type vaciarCarritoResponse {
+  status: Float!
+  error: String!
+  deleted: Boolean!
+}
+
+type Query {
+  findAll: [Auth!]!
+  getProductos: ProductosResponseDto!
+  getProductoByIdCarrito(getProductoByIdCarritoInput: getProductoByIdCarritoInput!): getProductoByIdCarritoResponse!
+}
+
+input getProductoByIdCarritoInput {
+  id: Int!
+}
+
+type Mutation {
+  login(loginUserInput: LoginRequestDto!): LoginResponseDto!
+  register(registerUserInput: RegisterRequestDto!): RegisterResponseDto!
+  createCarrito(createCarritoInput: CreateCarritoInput!): CreateCarritoResponseDto!
+  crearLineaProducto(createLineaProductoInput: CreateLineaProductoInput!): CreateLineaProductoResponseDto!
+  vaciarCarrito(vaciarCarritoInput: vaciarCarritoRequest!): vaciarCarritoResponse!
+}
+
+input LoginRequestDto {
+  email: String!
+  password: String!
+}
+
+input RegisterRequestDto {
+  name: String!
+  email: String!
+  password: String!
+}
+
+input CreateCarritoInput {
+  idUser: Float!
+}
+
+input CreateLineaProductoInput {
+  idcarrito: Float!
+  idProducto: Float!
+  cant: Float!
+  subprice: Float!
+}
+
+input vaciarCarritoRequest {
+  id: Float!
+}

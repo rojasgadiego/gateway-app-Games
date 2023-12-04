@@ -1,0 +1,70 @@
+syntax = "proto3";
+
+package lineaproducto;
+
+service LineaproductoService {
+    rpc createLineaproducto (createLineaproductoRequest) returns (createLineaproductoResponse) {}
+    rpc getProductosByIdCarrito (GetProductosRequest) returns (GetProductosResponse) {}
+    rpc vaciarCarrito (vaciarCarritoRequest) returns (vaciarCarritoResponse) {}
+}
+
+message createLineaproductoRequest {
+    int32 idcarrito = 1;
+    int32 idProducto = 2;
+    int32 cant = 3;
+    int32 subprice = 4;
+}
+
+message Lineaproducto {
+    int32 id = 1;
+    int32 idcarrito = 2;
+    int32 idProducto = 3;
+    int32 cant = 4;
+    int32 subprice = 5;
+}
+
+message createLineaproductoResponse {
+    int32 status = 1;
+    repeated string error = 2;
+    Lineaproducto lineaproducto = 3;
+}
+
+message GetProductosRequest {
+  int32 id = 1;
+}
+
+message Producto {
+    int32 id = 1;
+    string name = 2;
+    string description = 3;
+    int32 price = 4;
+    int32 rank = 5;
+    int32 stock = 6;
+    string state = 7;
+    string image = 8;
+    repeated Ingrediente ingredients = 9;
+}
+
+message Ingrediente {
+    int32 id = 1;
+    string name = 2;
+    string description = 3;
+    int32 price = 4;
+}
+
+message GetProductosResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  repeated Producto productos = 3;
+}
+
+
+message vaciarCarritoRequest {
+  int32 id = 1;
+}
+
+message vaciarCarritoResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  bool deleted = 3;
+}

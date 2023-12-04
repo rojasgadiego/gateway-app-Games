@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package carrito;
+
+service CarritoService {
+    rpc createCarrito (createCarritoRequest) returns (createCarritoResponse) {}
+    rpc findOne(findCarritoRequest) returns (findCarritoResponse) {}
+}
+
+message createCarritoRequest {
+    int32 idUser = 1;
+}
+
+message Carrito {
+    int32 id = 1;
+    string createdAt = 2;
+    int32 idUser = 3;
+    string state = 4;
+}
+
+message createCarritoResponse {
+    int32 status = 1;
+    repeated string error = 2;
+    Carrito carrito = 3;
+}
+
+message findCarritoRequest {
+    int32 id = 1;
+}
+
+message findCarritoResponse {
+    int32 status = 1;
+    repeated string error = 2;
+    Carrito carrito = 3;
+}
