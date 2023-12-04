@@ -40,6 +40,7 @@ export class LineaproductoService {
     const response = await firstValueFrom(
       this.svc.getProductosByIdCarrito(data),
     );
+
     if (response.status >= HttpStatus.NOT_FOUND) {
       return {
         productos: [],
