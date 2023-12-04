@@ -9,5 +9,5 @@ export class vaciarCarritoResponse {
   error: string | null;
 
   @Field()
-  deleted: boolean;
+  Empty: boolean;
 }

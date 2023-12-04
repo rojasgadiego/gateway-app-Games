@@ -61,13 +61,13 @@ export class LineaproductoService {
     );
     if (response.status >= HttpStatus.NOT_FOUND) {
       return {
-        deleted: response.deleted,
+        Empty: response.deleted,
         error: response.error[0],
         status: response.status,
       };
     }
     return {
-      deleted: response.deleted,
+      Empty: response.deleted,
       error: '',
       status: HttpStatus.OK,
     };

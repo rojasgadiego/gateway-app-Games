@@ -68,7 +68,7 @@ type getProductoByIdCarritoResponse {
 type vaciarCarritoResponse {
   status: Float!
   error: String!
-  deleted: Boolean!
+  Empty: Boolean!
 }
 
 type Query {

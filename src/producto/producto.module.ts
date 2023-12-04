@@ -7,6 +7,7 @@ import {
   PRODUCTOS_SERVICE_NAME,
 } from './types/producto.pb';
 import { join } from 'path';
+import { AuthModule } from 'src/auth/auth.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { join } from 'path';
         },
       },
     ]),
+    AuthModule,
   ],
   providers: [ProductoResolver, ProductoService],
 })
