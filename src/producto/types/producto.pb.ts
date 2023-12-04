@@ -33,8 +33,22 @@ export interface productosResponse {
 
 export interface Empty {}
 
+export interface seedProductosResponse {
+  status: number;
+  error: string[];
+  message: string;
+}
+
+export interface seedIngredientesResponse {
+  status: number;
+  error: string[];
+  message: string;
+}
+
 export interface ProductosServiceClient {
   getProductos(Empty): Observable<productosResponse>;
+  seedProductos(Empty): Observable<seedProductosResponse>;
+  seedIngredientes(Empty): Observable<seedIngredientesResponse>;
 }
 
 export const PRODUCTOS_SERVICE_NAME = 'ProductoService';

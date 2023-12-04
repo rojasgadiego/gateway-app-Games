@@ -46,6 +46,18 @@ type ProductosResponseDto {
   data: [Producto!]!
 }
 
+type SeedProductResponse {
+  status: Float!
+  error: String!
+  message: String!
+}
+
+type SeedIngredienteResponse {
+  status: Float!
+  error: String!
+  message: String!
+}
+
 type CreateCarritoResponseDto {
   status: Float!
   error: String!
@@ -84,6 +96,8 @@ input getProductoByIdCarritoInput {
 type Mutation {
   login(loginUserInput: LoginRequestDto!): LoginResponseDto!
   register(registerUserInput: RegisterRequestDto!): RegisterResponseDto!
+  seedProduct: SeedProductResponse!
+  seedIngredientes: SeedIngredienteResponse!
   createCarrito(createCarritoInput: CreateCarritoInput!): CreateCarritoResponseDto!
   crearLineaProducto(createLineaProductoInput: CreateLineaProductoInput!): CreateLineaProductoResponseDto!
   vaciarCarrito(vaciarCarritoInput: vaciarCarritoRequest!): vaciarCarritoResponse!

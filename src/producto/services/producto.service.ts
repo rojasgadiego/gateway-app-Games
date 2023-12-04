@@ -25,4 +25,24 @@ export class ProductoService {
       data: productos,
     };
   }
+
+  async seedProductos() {
+    const seedproductos = await firstValueFrom(this.svc.seedProductos({}));
+    return {
+      status: seedproductos.status,
+      error: '',
+      message: seedproductos.message,
+    };
+  }
+
+  async seedIngredientes() {
+    const seedingredientes = await firstValueFrom(
+      this.svc.seedIngredientes({}),
+    );
+    return {
+      status: seedingredientes.status,
+      error: '',
+      message: seedingredientes.message,
+    };
+  }
 }

@@ -4,6 +4,9 @@ package productos;
 
 service ProductoService {
     rpc getProductos (Empty) returns (productosResponse) {}
+    rpc findById (FindByIdRequest) returns (FindByIdResponse) {}
+    rpc seedProductos (Empty) returns (seedProductosResponse) {}
+    rpc seedIngredientes (Empty) returns (seedIngredientesResponse) {}
 }
 
 message Empty {}
@@ -31,4 +34,26 @@ message productosResponse {
     int32 status = 1;
     repeated string error = 2;
     repeated Producto data = 3;
+}
+
+message FindByIdRequest {
+  int32 id = 1;
+}
+
+message FindByIdResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  Producto producto = 3;
+}
+
+message seedProductosResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  string message = 3;
+}
+
+message seedIngredientesResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  string message = 3;
 }
