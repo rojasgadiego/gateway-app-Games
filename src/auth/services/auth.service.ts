@@ -68,7 +68,6 @@ export class AuthService {
 
   public async findUserById({ id }: FindUserRequestDto) {
     const response = await firstValueFrom(this.svc.findUserById({ id }));
-    console.log(response);
     if (response.status === 409) {
       return {
         status: response.status,
