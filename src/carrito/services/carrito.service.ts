@@ -27,7 +27,7 @@ export class CarritoService {
         status: response.status,
         error: response.error[0],
         message: 'not created',
-        idCarrito: 0,
+        idCarrito: response.carrito.id,
       };
     }
     return {

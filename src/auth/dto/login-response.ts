@@ -10,4 +10,7 @@ export class LoginResponseDto {
 
   @Field()
   error: string | null;
+
+  @Field()
+  idUser: number;
 }
