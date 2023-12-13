@@ -97,11 +97,26 @@ type vaciarCarritoResponse {
   Empty: Boolean!
 }
 
+type Lineaproductoi {
+  id: Int!
+  producto: Producto!
+  cant: Float!
+  subprice: Float!
+  idcarrito: Float!
+}
+
+type getLineaProductoByIdCarritoResponse {
+  status: Float!
+  error: String!
+  lp: [Lineaproductoi!]!
+}
+
 type Query {
   findAll: [Auth!]!
   findUserById(findUserById: FindUserRequestDto!): FindUserResponseDto!
   getProductos: ProductosResponseDto!
   getProductoByIdCarrito(getProductoByIdCarritoInput: getProductoByIdCarritoInput!): getProductoByIdCarritoResponse!
+  getLineaProductoByIdCarrito(getLineaProductoByIdCarritoInput: getProductoByIdCarritoInput!): getLineaProductoByIdCarritoResponse!
 }
 
 input FindUserRequestDto {

@@ -12,6 +12,9 @@ export interface LineaproductoServiceClient {
     GetProductosRequest,
   ): Observable<GetProductosResponse>;
   vaciarCarrito(vaciarCarritoRequest): Observable<vaciarCarritoResponse>;
+  getLineaProductoByIdCarrito(
+    GetLineaProductosRequest,
+  ): Observable<GetLineaProductosResponse>;
 }
 
 export interface createLineaproductoRequest {
@@ -75,4 +78,23 @@ export interface vaciarCarritoResponse {
   status: number;
   error: string[];
   deleted: boolean;
+}
+
+//find producto by Id
+export interface GetLineaProductosRequest {
+  id: number;
+}
+
+export interface GetLineaProductosResponse {
+  status: number;
+  error: string[];
+  lp: lineaproductoi[];
+}
+
+export class lineaproductoi {
+  id: number;
+  cant: number;
+  subprice: number;
+  idcarrito: number;
+  producto: Producto;
 }

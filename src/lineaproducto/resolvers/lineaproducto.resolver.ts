@@ -6,6 +6,7 @@ import { getProductoByIdCarritoInput } from '../dto/getproductoByCarrito';
 import { getProductoByIdCarritoResponse } from '../dto/getproductoByCarrito.response';
 import { vaciarCarritoResponse } from '../dto/vaciarCarrito.response';
 import { vaciarCarritoRequest } from '../dto/vaciarCarrito.input';
+import { getLineaProductoByIdCarritoResponse } from '../dto/getLineaProductoByCarrito';
 
 @Resolver()
 export class LineaproductoResolver {
@@ -37,5 +38,15 @@ export class LineaproductoResolver {
     vaciarCarritoInput: vaciarCarritoRequest,
   ) {
     return this.lineaproductoService.vaciarCarrito(vaciarCarritoInput);
+  }
+
+  @Query(() => getLineaProductoByIdCarritoResponse)
+  getLineaProductoByIdCarrito(
+    @Args('getLineaProductoByIdCarritoInput')
+    getProductoByIdCarrito: getProductoByIdCarritoInput,
+  ) {
+    return this.lineaproductoService.getLineaProductosByIdCarrito(
+      getProductoByIdCarrito,
+    );
   }
 }

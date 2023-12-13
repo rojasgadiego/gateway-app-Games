@@ -72,4 +72,23 @@ export class LineaproductoService {
       status: HttpStatus.OK,
     };
   }
+
+  async getLineaProductosByIdCarrito(data) {
+    const response = await firstValueFrom(
+      this.svc.getLineaProductoByIdCarrito(data),
+    );
+
+    if (response.status >= HttpStatus.NOT_FOUND) {
+      return {
+        lp: [],
+        error: response.error[0],
+        status: response.status,
+      };
+    }
+    return {
+      lp: response.lp,
+      error: '',
+      status: response.status,
+    };
+  }
 }

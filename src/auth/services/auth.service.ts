@@ -5,7 +5,6 @@ import { ClientGrpc } from '@nestjs/microservices';
 import { RegisterRequestDto } from '../dto/register-request';
 import { LoginRequestDto } from '../dto/login-request';
 import { ValidateInputDto } from '../dto/validate-input';
-import { ValidateResponseDto } from '../dto/validate-response';
 import { FindUserRequestDto } from '../dto/find-user.input';
 
 @Injectable()
