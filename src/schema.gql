@@ -130,6 +130,14 @@ type CreatePagoResponseDto {
   url: String!
 }
 
+type ValidateTransaccionResponseDto {
+  status: Float!
+  error: String!
+  vci: String!
+  statustrx: String!
+  responseCode: Float!
+}
+
 type Query {
   findAll: [Auth!]!
   findUserById(findUserById: FindUserRequestDto!): FindUserResponseDto!
@@ -157,6 +165,7 @@ type Mutation {
   updateLineaProducto(updatelineaProductoIdInput: updateLineaProductoRequest!): updateLineaProductoResponse!
   removeLineaProducto(lineaProductoIdInput: deleteLineaProductoRequest!): deleteLineaProductoResponse!
   createPago(createPagoInput: CreatePagoInput!): CreatePagoResponseDto!
+  validateTransaccion(validateTransaccionInput: ValidateTransaccionInput!): ValidateTransaccionResponseDto!
 }
 
 input LoginRequestDto {
@@ -196,4 +205,8 @@ input deleteLineaProductoRequest {
 
 input CreatePagoInput {
   amount: Float!
+}
+
+input ValidateTransaccionInput {
+  token: String!
 }

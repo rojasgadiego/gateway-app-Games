@@ -1,9 +1,9 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { HttpStatus, Inject, Injectable } from '@nestjs/common';
 import { PAGO_SERVICE_NAME, PagoServiceClient } from '../types/pago.pb';
 import { ClientGrpc } from '@nestjs/microservices';
 import { CreatePagoInput } from '../dto/create-pago.input';
 import { firstValueFrom } from 'rxjs';
-import { url } from 'inspector';
+import { ValidateTransaccionInput } from '../dto/validate-pago.input';
 
 @Injectable()
 export class PagoService {
@@ -26,5 +26,35 @@ export class PagoService {
         url: response.url,
       };
     }
+    return {
+      status: HttpStatus.BAD_REQUEST,
+      error: response.error,
+      token: '',
+      url: '',
+    };
+  }
+
+  async validateTransaccion(
+    validateTransaccionInput: ValidateTransaccionInput,
+  ) {
+    const response = await firstValueFrom(
+      this.svc.validateTransaccion(validateTransaccionInput),
+    );
+    if (response.status === 200) {
+      return {
+        status: response.status,
+        error: '',
+        vci: response.vci,
+        statustrx: response.statustrx,
+        responseCode: response.responseCode,
+      };
+    }
+    return {
+      status: response.status,
+      error: response.error[0],
+      vci: response.vci,
+      statustrx: response.statustrx,
+      responseCode: response.responseCode,
+    };
   }
 }

@@ -4,6 +4,7 @@ package pago;
 
 service PagoService {
     rpc createPago (createPagoRequest) returns (createPagoResponse) {}
+    rpc validateTransaccion (validateTransaccionRequest) returns (validateTransaccionResponse) {}
 }
 
 message createPagoRequest {
@@ -16,4 +17,18 @@ message createPagoResponse {
     string token = 3;
     string url = 4;
 }
+
+message validateTransaccionRequest {
+    string token = 1;
+}
+
+message validateTransaccionResponse {
+    int32 status = 1;
+    repeated string error = 2;
+    string vci = 3;
+    string statustrx = 4;
+    int32 responseCode = 5;
+}
+
+
 

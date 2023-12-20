@@ -6,6 +6,9 @@ export const PAGO_PACKAGE_NAME = 'pago';
 
 export interface PagoServiceClient {
   createPago(request: createPagoRequest): Observable<createPagoResponse>;
+  validateTransaccion(
+    request: validateTransaccionRequest,
+  ): Observable<validateTransaccionResponse>;
 }
 
 export interface createPagoRequest {
@@ -17,4 +20,16 @@ export interface createPagoResponse {
   error: string[];
   token: string;
   url: string;
+}
+
+export interface validateTransaccionRequest {
+  token: string;
+}
+
+export interface validateTransaccionResponse {
+  status: number;
+  error: string[];
+  vci: string;
+  statustrx: string;
+  responseCode: number;
 }
