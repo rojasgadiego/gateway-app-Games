@@ -15,6 +15,12 @@ export interface LineaproductoServiceClient {
   getLineaProductoByIdCarrito(
     GetLineaProductosRequest,
   ): Observable<GetLineaProductosResponse>;
+  deleteLineaProductoById(
+    GetLineaProductosRequest,
+  ): Observable<deleteLineaProductoResponse>;
+  updateLineaProductoById(
+    UpdateLineaProductosRequest,
+  ): Observable<updateLineaProductoResponse>;
 }
 
 export interface createLineaproductoRequest {
@@ -89,6 +95,18 @@ export interface GetLineaProductosResponse {
   status: number;
   error: string[];
   lp: lineaproductoi[];
+}
+
+export interface deleteLineaProductoResponse {
+  status: number;
+  error: string[];
+  delete: boolean;
+}
+
+export interface updateLineaProductoResponse {
+  status: number;
+  error: string[];
+  update: boolean;
 }
 
 export class lineaproductoi {

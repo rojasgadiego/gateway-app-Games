@@ -7,6 +7,8 @@ service LineaproductoService {
     rpc getProductosByIdCarrito (GetProductosRequest) returns (GetProductosResponse) {}
     rpc vaciarCarrito (vaciarCarritoRequest) returns (vaciarCarritoResponse) {}
     rpc getLineaProductoByIdCarrito (GetLineaProductosRequest) returns (GetLineaProductosResponse) {}
+    rpc deleteLineaProductoById (deleteLineaProductosRequest) returns (deleteLineaProductosResponse) {}
+    rpc updateLineaProductoById (updateLineaProductosRequest) returns (updateLineaProductosResponse) {}
 }
 
 message createLineaproductoRequest {
@@ -86,3 +88,25 @@ message LineaProductores {
     int32 subprice = 4;
     Producto producto = 5;
 }
+
+message deleteLineaProductosRequest {
+    int32 id = 1;
+}
+
+message deleteLineaProductosResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  bool deleted = 3;
+}
+
+message updateLineaProductosRequest {
+  int32 id = 1;
+  int32 cant = 2;
+}
+
+message updateLineaProductosResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  bool update = 3;
+}
+

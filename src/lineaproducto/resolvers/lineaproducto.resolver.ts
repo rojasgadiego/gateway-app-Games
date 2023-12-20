@@ -7,6 +7,10 @@ import { getProductoByIdCarritoResponse } from '../dto/getproductoByCarrito.resp
 import { vaciarCarritoResponse } from '../dto/vaciarCarrito.response';
 import { vaciarCarritoRequest } from '../dto/vaciarCarrito.input';
 import { getLineaProductoByIdCarritoResponse } from '../dto/getLineaProductoByCarrito';
+import { deleteLineaProductoResponse } from '../dto/deleteLineaProducto.response';
+import { deleteLineaProductoRequest } from '../dto/delete-lineaproducto.input';
+import { updateLineaProductoResponse } from '../dto/update-lineaproducto.entity';
+import { updateLineaProductoRequest } from '../dto/update-lineaproducto.input';
 
 @Resolver()
 export class LineaproductoResolver {
@@ -48,5 +52,21 @@ export class LineaproductoResolver {
     return this.lineaproductoService.getLineaProductosByIdCarrito(
       getProductoByIdCarrito,
     );
+  }
+
+  @Mutation(() => updateLineaProductoResponse)
+  updateLineaProducto(
+    @Args('updatelineaProductoIdInput')
+    updateLineaProducto: updateLineaProductoRequest,
+  ) {
+    return this.lineaproductoService.updateLineaProducto(updateLineaProducto);
+  }
+
+  @Mutation(() => deleteLineaProductoResponse)
+  removeLineaProducto(
+    @Args('lineaProductoIdInput')
+    deleteLineaProducto: deleteLineaProductoRequest,
+  ) {
+    return this.lineaproductoService.deleteLineaProducto(deleteLineaProducto);
   }
 }

@@ -111,6 +111,18 @@ type getLineaProductoByIdCarritoResponse {
   lp: [Lineaproductoi!]!
 }
 
+type deleteLineaProductoResponse {
+  status: Float!
+  error: String!
+  deleted: Boolean!
+}
+
+type updateLineaProductoResponse {
+  status: Float!
+  error: String!
+  update: Boolean!
+}
+
 type Query {
   findAll: [Auth!]!
   findUserById(findUserById: FindUserRequestDto!): FindUserResponseDto!
@@ -135,6 +147,8 @@ type Mutation {
   createCarrito(createCarritoInput: CreateCarritoInput!): CreateCarritoResponseDto!
   crearLineaProducto(createLineaProductoInput: CreateLineaProductoInput!): CreateLineaProductoResponseDto!
   vaciarCarrito(vaciarCarritoInput: vaciarCarritoRequest!): vaciarCarritoResponse!
+  updateLineaProducto(updatelineaProductoIdInput: updateLineaProductoRequest!): updateLineaProductoResponse!
+  removeLineaProducto(lineaProductoIdInput: deleteLineaProductoRequest!): deleteLineaProductoResponse!
 }
 
 input LoginRequestDto {
@@ -160,5 +174,14 @@ input CreateLineaProductoInput {
 }
 
 input vaciarCarritoRequest {
+  id: Float!
+}
+
+input updateLineaProductoRequest {
+  id: Float!
+  cant: Float!
+}
+
+input deleteLineaProductoRequest {
   id: Float!
 }

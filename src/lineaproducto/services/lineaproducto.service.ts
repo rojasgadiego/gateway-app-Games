@@ -91,4 +91,40 @@ export class LineaproductoService {
       status: response.status,
     };
   }
+
+  async deleteLineaProducto(data) {
+    const response = await firstValueFrom(
+      this.svc.deleteLineaProductoById(data),
+    );
+    if (response.status >= HttpStatus.NOT_FOUND) {
+      return {
+        deleted: false,
+        error: response.error[0],
+        status: response.status,
+      };
+    }
+    return {
+      deleted: true,
+      error: '',
+      status: response.status,
+    };
+  }
+
+  async updateLineaProducto(data) {
+    const response = await firstValueFrom(
+      this.svc.updateLineaProductoById(data),
+    );
+    if (response.status >= HttpStatus.NOT_FOUND) {
+      return {
+        update: false,
+        error: response.error[0],
+        status: response.status,
+      };
+    }
+    return {
+      update: true,
+      error: '',
+      status: response.status,
+    };
+  }
 }
