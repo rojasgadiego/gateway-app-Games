@@ -123,6 +123,13 @@ type updateLineaProductoResponse {
   update: Boolean!
 }
 
+type CreatePagoResponseDto {
+  status: Float!
+  error: String!
+  token: String!
+  url: String!
+}
+
 type Query {
   findAll: [Auth!]!
   findUserById(findUserById: FindUserRequestDto!): FindUserResponseDto!
@@ -149,6 +156,7 @@ type Mutation {
   vaciarCarrito(vaciarCarritoInput: vaciarCarritoRequest!): vaciarCarritoResponse!
   updateLineaProducto(updatelineaProductoIdInput: updateLineaProductoRequest!): updateLineaProductoResponse!
   removeLineaProducto(lineaProductoIdInput: deleteLineaProductoRequest!): deleteLineaProductoResponse!
+  createPago(createPagoInput: CreatePagoInput!): CreatePagoResponseDto!
 }
 
 input LoginRequestDto {
@@ -184,4 +192,8 @@ input updateLineaProductoRequest {
 
 input deleteLineaProductoRequest {
   id: Float!
+}
+
+input CreatePagoInput {
+  amount: Float!
 }

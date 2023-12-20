@@ -6,6 +6,7 @@ import { AuthModule } from './auth/auth.module';
 import { ProductoModule } from './producto/producto.module';
 import { CarritoModule } from './carrito/carrito.module';
 import { LineaproductoModule } from './lineaproducto/lineaproducto.module';
+import { PagoModule } from './pago/pago.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { LineaproductoModule } from './lineaproducto/lineaproducto.module';
     ProductoModule,
     CarritoModule,
     LineaproductoModule,
+    PagoModule,
   ],
   controllers: [],
   providers: [],
