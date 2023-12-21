@@ -79,6 +79,12 @@ type CreateCarritoResponseDto {
   idCarrito: Float!
 }
 
+type updateCarritoResponse {
+  status: Float!
+  error: String!
+  update: Boolean!
+}
+
 type CreateLineaProductoResponseDto {
   status: Float!
   error: String!
@@ -160,6 +166,7 @@ type Mutation {
   seedProduct: SeedProductResponse!
   seedIngredientes: SeedIngredienteResponse!
   createCarrito(createCarritoInput: CreateCarritoInput!): CreateCarritoResponseDto!
+  updateCarrito(updateCarritoInput: updateCarritoInput!): updateCarritoResponse!
   crearLineaProducto(createLineaProductoInput: CreateLineaProductoInput!): CreateLineaProductoResponseDto!
   vaciarCarrito(vaciarCarritoInput: vaciarCarritoRequest!): vaciarCarritoResponse!
   updateLineaProducto(updatelineaProductoIdInput: updateLineaProductoRequest!): updateLineaProductoResponse!
@@ -181,6 +188,11 @@ input RegisterRequestDto {
 
 input CreateCarritoInput {
   idUser: Float!
+}
+
+input updateCarritoInput {
+  id: Float!
+  state: String!
 }
 
 input CreateLineaProductoInput {

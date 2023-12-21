@@ -6,6 +6,7 @@ import {
 import { ClientGrpc } from '@nestjs/microservices';
 import { CreateCarritoInput } from '../dto/create-carrito.input';
 import { firstValueFrom } from 'rxjs';
+import { updateCarritoInput } from '../dto/update-carrito.input';
 
 @Injectable()
 export class CarritoService {
@@ -35,6 +36,24 @@ export class CarritoService {
       error: '',
       message: 'Carrito Creado',
       idCarrito: response.carrito.id,
+    };
+  }
+
+  async updateCarrito(updateCarritoInput: updateCarritoInput) {
+    const response = await firstValueFrom(
+      this.svc.updateCarrito(updateCarritoInput),
+    );
+    if (response.status === 404) {
+      return {
+        status: response.status,
+        error: response.error[0],
+        update: response.update,
+      };
+    }
+    return {
+      status: response.status,
+      error: '',
+      update: response.update,
     };
   }
 }

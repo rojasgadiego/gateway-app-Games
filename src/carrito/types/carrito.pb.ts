@@ -9,6 +9,9 @@ export interface CarritoServiceClient {
     request: createCarritoRequest,
   ): Observable<createCarritoResponse>;
   findOne(request: findCarritoRequest): Observable<findCarritoResponse>;
+  updateCarrito(
+    request: UpdateCarritoRequest,
+  ): Observable<UpdateCarritoResponse>;
 }
 
 export interface createCarritoRequest {
@@ -36,4 +39,15 @@ export interface findCarritoResponse {
   status: number;
   error: string[];
   carrito: Carrito;
+}
+
+export interface UpdateCarritoRequest {
+  id: number;
+  state: string;
+}
+
+export interface UpdateCarritoResponse {
+  status: number;
+  error: string[];
+  update: boolean;
 }
