@@ -11,26 +11,13 @@ type LoginResponseDto {
   status: Float!
   token: String!
   error: String!
-  idUser: Float!
+  idUser: String!
 }
 
 type RegisterResponseDto {
   status: Float!
   error: String!
   message: String!
-}
-
-type Usuario {
-  id: Int!
-  name: String!
-  email: String!
-  password: String!
-}
-
-type FindUserResponseDto {
-  status: Float!
-  error: String!
-  user: Usuario
 }
 
 type Ingrediente {
@@ -146,14 +133,9 @@ type ValidateTransaccionResponseDto {
 
 type Query {
   findAll: [Auth!]!
-  findUserById(findUserById: FindUserRequestDto!): FindUserResponseDto!
   getProductos: ProductosResponseDto!
   getProductoByIdCarrito(getProductoByIdCarritoInput: getProductoByIdCarritoInput!): getProductoByIdCarritoResponse!
   getLineaProductoByIdCarrito(getLineaProductoByIdCarritoInput: getProductoByIdCarritoInput!): getLineaProductoByIdCarritoResponse!
-}
-
-input FindUserRequestDto {
-  id: Float!
 }
 
 input getProductoByIdCarritoInput {

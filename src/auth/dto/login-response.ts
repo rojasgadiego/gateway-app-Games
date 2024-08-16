@@ -12,5 +12,5 @@ export class LoginResponseDto {
   error: string | null;
 
   @Field()
-  idUser: number;
+  idUser: string;
 }

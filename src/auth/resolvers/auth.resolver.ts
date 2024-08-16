@@ -35,9 +35,4 @@ export class AuthResolver {
       throw new BadRequestException(error);
     }
   }
-
-  @Query(() => FindUserResponseDto)
-  findUserById(@Args('findUserById') findUserById: FindUserRequestDto) {
-    return this.authService.findUserById(findUserById);
-  }
 }

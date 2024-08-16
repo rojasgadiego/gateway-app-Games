@@ -20,7 +20,7 @@ export interface LoginResponse {
   status: number;
   error: string[];
   token: string;
-  idUser: number;
+  idUser: string;
 }
 
 export interface ValidateRequest {
