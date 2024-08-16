@@ -2,11 +2,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type Auth {
-  """Example field (placeholder)"""
-  exampleField: Int!
-}
-
 type LoginResponseDto {
   status: Float!
   token: String!
@@ -132,7 +127,6 @@ type ValidateTransaccionResponseDto {
 }
 
 type Query {
-  findAll: [Auth!]!
   getProductos: ProductosResponseDto!
   getProductoByIdCarrito(getProductoByIdCarritoInput: getProductoByIdCarritoInput!): getProductoByIdCarritoResponse!
   getLineaProductoByIdCarrito(getLineaProductoByIdCarritoInput: getProductoByIdCarritoInput!): getLineaProductoByIdCarritoResponse!

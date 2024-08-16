@@ -6,17 +6,10 @@ import { LoginResponseDto } from '../dto/login-response';
 import { LoginRequestDto } from '../dto/login-request';
 import { RegisterRequestDto } from '../dto/register-request';
 import { RegisterResponseDto } from '../dto/register-response';
-import { FindUserResponseDto } from '../dto/find-user.response';
-import { FindUserRequestDto } from '../dto/find-user.input';
 
 @Resolver(() => Auth)
 export class AuthResolver {
   constructor(private readonly authService: AuthService) {}
-
-  @Query(() => [Auth])
-  findAll() {
-    return this.authService.findAll();
-  }
 
   @Mutation(() => LoginResponseDto)
   login(@Args('loginUserInput') loginUserInput: LoginRequestDto) {
