@@ -9,14 +9,16 @@ import {
 import { Request } from 'express';
 import { AuthService } from '../services/auth.service';
 import { ValidateResponse } from '../types/auth.pb';
+import { GqlExecutionContext } from '@nestjs/graphql';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
   @Inject(AuthService)
   public readonly service: AuthService;
 
-  public async canActivate(ctx: ExecutionContext): Promise<boolean> | never {
+  public async canActivate(ctx: GqlExecutionContext): Promise<boolean> | never {
     const req: Request = ctx.switchToHttp().getRequest();
+    console.log(ctx);
     const authorization: string = req.headers['authorization'];
     if (!authorization) {
       throw new UnauthorizedException();

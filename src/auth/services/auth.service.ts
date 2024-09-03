@@ -36,9 +36,9 @@ export class AuthService {
     };
   }
 
-  async register({ name, email, password }: RegisterRequestDto) {
+  async register({ nombre, email, password }: RegisterRequestDto) {
     const response = await firstValueFrom(
-      this.svc.register({ name, email, password }),
+      this.svc.register({ nombre, email, password }),
     );
     if (response.status === 409) {
       return {
@@ -79,9 +79,5 @@ export class AuthService {
       error: 'null',
       user: response.user,
     };
-  }
-
-  findAll() {
-    return `This action returns all auth`;
   }
 }

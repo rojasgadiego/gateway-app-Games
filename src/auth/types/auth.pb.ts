@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 
 export interface RegisterRequest {
-  name: string;
+  nombre: string;
   email: string;
   password: string;
 }
@@ -30,11 +30,11 @@ export interface ValidateRequest {
 export interface ValidateResponse {
   status: number;
   error: string[];
-  userId: number;
+  userId: string;
 }
 
 export interface findUserRequest {
-  id: number;
+  id: string;
 }
 
 export interface User {

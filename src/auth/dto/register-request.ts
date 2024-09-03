@@ -3,7 +3,7 @@ import { Field, InputType } from '@nestjs/graphql';
 @InputType()
 export class RegisterRequestDto {
   @Field()
-  name: string;
+  nombre: string;
 
   @Field()
   email: string;

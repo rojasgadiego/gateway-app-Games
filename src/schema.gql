@@ -15,6 +15,25 @@ type RegisterResponseDto {
   message: String!
 }
 
+type ValidateResponseDto {
+  status: Float!
+  error: String
+  userId: String
+}
+
+type Usuario {
+  id: String!
+  nombre: String!
+  email: String!
+  password: String!
+}
+
+type FindUserResponseDto {
+  status: Float!
+  error: String!
+  user: Usuario
+}
+
 type Ingrediente {
   id: Float!
   name: String!
@@ -127,9 +146,14 @@ type ValidateTransaccionResponseDto {
 }
 
 type Query {
+  findUser(findUserInput: FindUserRequestDto!): FindUserResponseDto!
   getProductos: ProductosResponseDto!
   getProductoByIdCarrito(getProductoByIdCarritoInput: getProductoByIdCarritoInput!): getProductoByIdCarritoResponse!
   getLineaProductoByIdCarrito(getLineaProductoByIdCarritoInput: getProductoByIdCarritoInput!): getLineaProductoByIdCarritoResponse!
+}
+
+input FindUserRequestDto {
+  id: String!
 }
 
 input getProductoByIdCarritoInput {
@@ -139,6 +163,7 @@ input getProductoByIdCarritoInput {
 type Mutation {
   login(loginUserInput: LoginRequestDto!): LoginResponseDto!
   register(registerUserInput: RegisterRequestDto!): RegisterResponseDto!
+  validate(validateUserInput: ValidateInputDto!): ValidateResponseDto!
   seedProduct: SeedProductResponse!
   seedIngredientes: SeedIngredienteResponse!
   createCarrito(createCarritoInput: CreateCarritoInput!): CreateCarritoResponseDto!
@@ -157,9 +182,13 @@ input LoginRequestDto {
 }
 
 input RegisterRequestDto {
-  name: String!
+  nombre: String!
   email: String!
   password: String!
+}
+
+input ValidateInputDto {
+  token: String!
 }
 
 input CreateCarritoInput {

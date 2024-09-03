@@ -5,9 +5,9 @@ export class ValidateResponseDto {
   @Field()
   status: number;
 
-  @Field()
+  @Field({ nullable: true })
   error: string | null;
 
-  @Field()
-  userId: number;
+  @Field({ nullable: true })
+  userId: string | null;
 }
